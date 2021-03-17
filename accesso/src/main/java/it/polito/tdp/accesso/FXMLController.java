@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 
 public class FXMLController {
 	
+	//Ho perso inavvertitamente la mia versione della soluzione, questa è quella della profesorressa con l'aggiunta di alcuni miei elementi di contorno
+	
 	private int tentativiFatti = 0;
 	private int TMAX = 3;
 	private int TNOW;
@@ -48,8 +50,8 @@ public class FXMLController {
     		labelInfo.setText("Inserire il nome");
     	} else  {
     	
-    	this.tentativiFatti++;
     	if (password.length()<7) {  
+    		this.tentativiFatti++;
     		labelInfo.setText("La password deve contenere almeno 7 caratteri");
     		TNOW = (TMAX-tentativiFatti);
     		labelTentativi.setText("Numero di tentativi rimasti: " + Integer.toString(TNOW));
@@ -60,24 +62,25 @@ public class FXMLController {
     		
     	}else {
 
-    		if (password.matches("[a-zA-Z0-9?!@#]*") && 
-    				!password.matches("[a-z0-9?!@#]*") && 
-    				!password.matches("[a-z0-9]*") && 
-    				!password.matches("[a-z]*") &&
-    				!password.matches("[A-Z0-9?!@#]*") && 
-    				!password.matches("[A-Z0-9]*") &&
-    				!password.matches("[A-Z]*") &&
-    				!password.matches("[0-9a-zA-Z]*") &&
-    				!password.matches("[0-9a-z]*") &&
-    				!password.matches("[0-9]*") &&
-    				!password.matches("[?!@#a-zA-Z]*") &&
-    				!password.matches("[?!@#a-z]*") &&
-    				!password.matches("[?!@#]*") 
+    		if (password.matches("[a-zA-Z0-9?!@#]+") && 
+    				!password.matches("[a-z0-9?!@#]+") && 
+    				!password.matches("[a-z0-9]+") && 
+    				!password.matches("[a-z]+") &&
+    				!password.matches("[A-Z0-9?!@#]+") && 
+    				!password.matches("[A-Z0-9]+") &&
+    				!password.matches("[A-Z]+") &&
+    				!password.matches("[0-9a-zA-Z]+") &&
+    				!password.matches("[0-9a-z]+") &&
+    				!password.matches("[0-9]+") &&
+    				!password.matches("[?!@#a-zA-Z]+") &&
+    				!password.matches("[?!@#a-z]+") &&
+    				!password.matches("[?!@#]+") 
     				)
     		{
     			labelInfo.setText("Password corretta!");
     			labelTentativi.setText("");
     		}else {
+    			this.tentativiFatti++;
     			labelInfo.setText("La password deve contenere almeno 1 lettera maiuscola,\n"
     					+ "un numero ed un carattere tra ?!@# ");
         		TNOW = (TMAX-tentativiFatti);
